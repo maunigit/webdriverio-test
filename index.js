@@ -3,7 +3,7 @@ const assert = require('assert')
 
 const opts = {
   protocol: 'http',
-  hostname: '192.168.0.206', //to check
+  hostname: '192.168.0.253', //to check
   port: 4723,
   capabilities: {
     deviceName: "MI5",
@@ -13,12 +13,17 @@ const opts = {
     appPackage: "com.carquery.app",
     appActivity: "host.exp.exponent.MainActivity",
     automationName: "UiAutomator2",
-    appWaitForLaunch: "false"
+    appWaitForLaunch: "false",
+    avdArgs: "-no-window"
+    //isHeadless: "true"
   }
 };
 
 async function main () {
   const client = await wdio.remote(opts);
+
+  const res = await client.status();
+  assert.isObject(res.build);
 
   const current_package = await client.getCurrentPackage();
   console.log('current_package is: ' + current_package);
@@ -28,7 +33,8 @@ async function main () {
   const reset_text = await button_reset.getText();
   console.log('reset_text is: ' + reset_text);
 
-  await client.deleteSession();
+  const delete_session = await client.deleteSession();
+  assert.isNull(delete_session);
 }
 
 main();
