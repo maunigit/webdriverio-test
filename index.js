@@ -13,8 +13,8 @@ const opts = {
     appPackage: "com.carquery.app",
     appActivity: "host.exp.exponent.MainActivity",
     automationName: "UiAutomator2",
-    appWaitForLaunch: "false",
-    avdArgs: "-no-window"
+    appWaitForLaunch: "false"
+    //avdArgs: "-no-window"
     //isHeadless: "true"
   }
 };
@@ -22,19 +22,29 @@ const opts = {
 async function main () {
   const client = await wdio.remote(opts);
 
+  //let context = client.getContext();
+
   const res = await client.status();
-  assert.isObject(res.build);
+  //assert.isObject(res.build);
 
   const current_package = await client.getCurrentPackage();
   console.log('current_package is: ' + current_package);
-  assert.equal(current_package,"com.carquery.app");
+  //assert.equal(current_package,"com.carquery.app");
 
-  const button_reset = await client.$("~reset").waitForExist();
-  const reset_text = await button_reset.getText();
-  console.log('reset_text is: ' + reset_text);
+ 
+  const button_reset = await client.$("~reset");
+  //const reset_text = await button_reset.getText();
+  //console.log('reset_text is: ' + reset_text);
+  
 
   const delete_session = await client.deleteSession();
-  assert.isNull(delete_session);
+  //assert.isNull(delete_session);
+
+  /*
+  waitForIsShown (isShown = true) {
+    return $(this.selector).waitForDisplayed(DEFAULT_TIMEOUT, !isShown);
+  }
+  */
 }
 
 main();
