@@ -3,11 +3,11 @@ const assert = require('assert')
 
 const opts = {
   protocol: 'http',
-  hostname: '192.168.0.253', //to check
+  hostname: 'localhost', //appium server
   port: 4723,
   capabilities: {
     deviceName: "MI5",
-    udid: "26060fa3",
+    udid: "26060fa3", //macchina android
     platformName: "Android",
     platformVersion: "8.0.0",
     appPackage: "com.carquery.app",
@@ -32,7 +32,7 @@ async function main () {
   //assert.equal(current_package,"com.carquery.app");
 
  
-  const button_reset = await client.$("~reset");
+  //const button_reset = await client.$("~reset");
   //const reset_text = await button_reset.getText();
   //console.log('reset_text is: ' + reset_text);
   
