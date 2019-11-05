@@ -9,7 +9,7 @@
     "test-appium": "./node_modules/.bin/wdio wdio.conf.js"
   },
   "devDependencies": {
-    "@wdio/allure-reporter": "^5.15.3",
+    "@wdio/allure-reporter": "^5.15.7",
     "@wdio/appium-service": "^5.13.2",
     "@wdio/cli": "^5.15.3",
     "@wdio/jasmine-framework": "^5.15.1",
@@ -23,6 +23,12 @@
     "mocha": "^6.0.0",
     "rimraf": "^3.0.0",
     "wdio-chromedriver-service": "^5.0.2",
-    "webdriverio": "^5.1.0"
+    "webdriverio": "^5.1.0",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "@babel/traverse": "^7.5.5",
+    "@babel/types": "^7.5.5"
   }
 }
